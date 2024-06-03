@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>День рождения новой семьи</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            margin: 20px auto;
+            max-width: 800px; /* Ширина основной формы */
+            border-radius: 10px;
+        }
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .description {
+            margin-bottom: 20px;
+        }
+        .restaurant-images,
+        .single-image {
+            margin-bottom: 20px;
+        }
+        .restaurant-images img,
+        .single-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .form-group {
+            margin-top: 30px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .form-group input, .form-group textarea {
+            width: 90%;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+        }
+        .form-group button {
+            padding: 10px 30px;
+            font-size: 1em;
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #ff4757;
+        }
+        .confirmation-message {
+            font-style: italic;
+            color: #ccc;
+            margin-top: 10px;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            .form-group button {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>День рождение новой семьи</h1>
+        <div class="description">
+            <p>Мы рады пригласить вас 27 июля 2024 на особенное событие в нашей жизни - день рождения новой семьи!</p>
+        </div>
+        <p>Торжественная регистрация пройдет по адресу г. Саратов, ул. 2-я Садовая, д. 36/40 9:00</p>
+        <p>Торжественный банкет пройдет по адресу г. Саратов, Набережная космонавтов, 7а ст2 - VIP-Зал "Венеция" 12:00</p>
+          <div class="restaurant-images">
+            <img src="restaurant1.jpg" alt="Ресторан TheMost">
+        <p>Мы будем благодарны, если вы поддержите цветовую палитру нашего торжества</p>
+        <div class="single-image">
+            <img src="color_theme.jpg" alt="Цветовая гамма мероприятия">
+            <p>*Мужчины могу сочетать в выборе наряда: белый верх и низ, предложенной цветовой палитры дня</p>
+             </div>
+<div class="countdown" id="countdown">
+            До свадьбы осталось: <span id="days"></span>д <span id="hours"></span>ч <span id="minutes"></span>м <span id="seconds"></span>с
+        </div>
+        </div>
+        <p class="confirmation-message">Для подтверждения участия, заполните форму ниже</p>
+        <form action="https://formspree.io/f/mayrzdpy" method="post">
+            <div class="form-group">
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Ваш email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Ваше сообщение:</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Подтвердить участие</button>
+            </div>
+        </form>
+    </div>
+<script>
+        // Устанавливаем дату свадьбы
+        var weddingDate = new Date("July 27, 2024 09:00:00").getTime();
+
+        // Обновляем таймер каждую секунду
+        var countdownFunction = setInterval(function() {
+
+            // Получаем текущую дату и время
+            var now = new Date().getTime();
+
+            // Находим расстояние между текущей датой и датой свадьбы
+            var distance = weddingDate - now;
+
+            // Вычисляем время для дней, часов, минут и секунд
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Отображаем результат в элементах с id="days", "hours", "minutes", "seconds"
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            // Если обратный отсчет завершен, отображаем текст
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "Свадьба состоялась!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
