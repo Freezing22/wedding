@@ -1,4 +1,3 @@
-Ilya, [04.06.2024 15:44]
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -9,23 +8,18 @@ Ilya, [04.06.2024 15:44]
     <style>
         body {
             font-family: 'Great Vibes', cursive;
-            background: url('wedding_background.jpg') no-repeat center center fixed;
+            background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             padding: 0;
             color: #fff;
             text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
         .container {
             padding: 20px;
-            background: rgba(0, 0, 0, 0.3); /* Прозрачный фон для контейнера */
-            margin: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            margin: 20px auto;
             max-width: 800px; /* Ширина основной формы */
-            width: 100%; /* Контейнер занимает всю доступную ширину */
             border-radius: 10px;
         }
         h1 {
@@ -33,15 +27,17 @@ Ilya, [04.06.2024 15:44]
             margin-bottom: 20px;
         }
         p {
-            font-size: 1.2em;
+            font-size: 1.8em;
             margin-bottom: 20px;
         }
         .description {
             margin-bottom: 20px;
         }
+        .restaurant-images,
         .single-image {
             margin-bottom: 20px;
         }
+        .restaurant-images img,
         .single-image img {
             width: 100%;
             height: auto;
@@ -62,8 +58,6 @@ Ilya, [04.06.2024 15:44]
             font-size: 1em;
             border: none;
             border-radius: 5px;
-            background: rgba(255, 255, 255, 0.8); /* Белый прозрачный фон для ввода */
-            color: #000; /* Черный текст для ввода */
         }
         .form-group button {
             padding: 10px 30px;
@@ -104,8 +98,8 @@ Ilya, [04.06.2024 15:44]
         <p>Торжественная регистрация пройдет по адресу г. Саратов, ул. 2-я Садовая, д. 36/40 9:00</p>
         <p>Мы будем благодарны, если вы поддержите цветовую палитру нашего торжества</p>
         <div class="single-image">
-            <img src="color_theme.png" alt="Цветовая гамма мероприятия">
-            <p>*Мужчины могут сочетать в выборе наряда: белый верх и низ предложенной цветовой палитры дня</p>
+            <img src="color_theme.jpg" alt="Цветовая гамма мероприятия">
+            <p>*Мужчины могут сочетать в выборе наряда: белый верх и низ, предложенной цветовой палитры дня</p>
         </div>
         <div class="countdown" id="countdown">
             До свадьбы осталось: <span id="days"></span>д <span id="hours"></span>ч <span id="minutes"></span>м <span id="seconds"></span>с
@@ -120,16 +114,14 @@ Ilya, [04.06.2024 15:44]
                 <label for="message">Ваше сообщение:</label>
                 <textarea id="message" name="message" rows="4"></textarea>
             </div>
-
-Ilya, [04.06.2024 15:44]
-<div class="form-group">
+            <div class="form-group">
                 <button type="submit">Подтвердить участие</button>
             </div>
         </form>
     </div>
 <script>
         // Устанавливаем дату свадьбы
-        var weddingDate = new Date("July 27, 2024 09:00:00").getTime();
+    var weddingDate = new Date("July 27, 2024 09:00:00").getTime();
 
         // Обновляем таймер каждую секунду
         var countdownFunction = setInterval(function() {
